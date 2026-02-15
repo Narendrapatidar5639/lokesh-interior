@@ -15,10 +15,17 @@ export const Contact = () => {
   const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14638.16480540445!2d75.05389695028442!3d23.923610486874413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396125ac027f7147%3A0x60b7bc54d0dff0f0!2sDaloda%2C%20Madhya%20Pradesh%20458667!5e0!3m2!1sen!2sin!4v1709123456789!5m2!1sen!2sin";
 
   const handleWhatsAppClick = () => {
-    const text = `Hello! My name is ${formData.name}. %0AEmail: ${formData.email} %0AMessage: ${formData.message}`;
-    window.open(`https://wa.me/${adminPhone}?text=${text}`, '_blank');
-  };
+    // 1. Country code (91) ke saath clean number banayein
+    const cleanNumber = adminPhone.replace(/\D/g, '');
+    const finalNumber = cleanNumber.startsWith('91') ? cleanNumber : `91${cleanNumber}`;
 
+    // 2. Message ko sahi se encode karein taaki spaces break na ho
+    const message = `Hello! My name is ${formData.name}.\nEmail: ${formData.email}\nMessage: ${formData.message}`;
+    const encodedText = encodeURIComponent(message);
+
+    // 3. Final URL kholiye
+    window.open(`https://wa.me/${finalNumber}?text=${encodedText}`, '_blank');
+  };
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-20">

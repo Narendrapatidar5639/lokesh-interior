@@ -67,12 +67,19 @@ export const ProjectDetail = () => {
   };
 
   const handleWhatsAppClick = () => {
-    if (!project) return;
-    const projectUrl = window.location.href;
-    const message = `Hello, I'm interested in this project:\n\n*Project Name:* ${project.title}\n*Location:* ${project.design_loc}\n*Link:* ${projectUrl}\n\nI want to discuss more about this design.`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${project.whatsapp_number}?text=${encodedMessage}`, '_blank');
-  };
+  if (!project) return;
+
+  // 1. Number se +, spaces, aur dashes hatane ke liye (Very Important)
+  const cleanNumber = project.whatsapp_number.replace(/\D/g, ''); 
+
+  const projectUrl = window.location.href;
+  const message = `Hello, I'm interested in this project:\n\n*Project Name:* ${project.title}\n*Location:* ${project.design_loc}\n*Link:* ${projectUrl}\n\nI want to discuss more about this design.`;
+  
+  const encodedMessage = encodeURIComponent(message);
+
+  // 2. Ab 'cleanNumber' ka use karein
+  window.open(`https://wa.me/${cleanNumber}?text=${encodedMessage}`, '_blank');
+};
 
   if (loading) return <div className="text-center py-20">Loading Project...</div>;
   if (!project) return <div className="text-center py-20">Project Not Found</div>;

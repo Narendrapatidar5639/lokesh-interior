@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+/* Entrance Animation */
+@keyframes popupReveal {
+  0% { opacity: 0; filter: blur(10px); transform: scale(0.95); }
+  100% { opacity: 1; filter: blur(0px); transform: scale(1); }
+}
+
+.popup-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* Sirf halka sa andhera taaki piche ka home page dikhe */
+  backdrop-filter: blur(4px); /* Piche ka area thoda dhundhla hoga professional feel ke liye */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.popup-box {
+  position: relative;
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.15) !important; /* Transparent white */
+  backdrop-filter: blur(25px) saturate(150%); /* Glass feel */
+  -webkit-backdrop-filter: blur(25px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Glass ki edge */
+  width: 90%;
+  max-width: 420px;
+  padding: 40px !important;
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  animation: popupReveal 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.popup-title {
+  color: #ffffff !important; /* White text glass ke upar saaf dikhega */
+  font-size: 1.8rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 10px !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.popup-text {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1rem !important;
+  margin-bottom: 30px !important;
+  line-height: 1.5;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.popup-btn {
+  flex: 1;
+  padding: 14px !important;
+  border-radius: 15px !important;
+  border: none !important;
+  cursor: pointer;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease;
+}
+
+/* Golden Oak Button (Login) */
+.login-btn {
+  background: #d4a373 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 15px rgba(212, 163, 115, 0.3);
+}
+
+.login-btn:hover {
+  background: #bc8a5f !important;
+  transform: translateY(-2px);
+}
+
+/* Signup Button (Transparent Glassy) */
+.signup-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.signup-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Close Symbol Visibility */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close:hover {
+  color: #ffffff !important;
+  transform: scale(1.1);
+}

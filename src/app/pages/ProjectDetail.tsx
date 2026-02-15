@@ -65,19 +65,23 @@ export const ProjectDetail = () => {
       toast.error("Failed to submit feedback");
     }
   };
+const handleWhatsAppClick = () => {
+  if (!project || !project.whatsapp_number) return;
 
-  const handleWhatsAppClick = () => {
-  if (!project) return;
+  // 1. Pehle saare faltu symbols (+, spaces) hatao
+  let cleanNumber = project.whatsapp_number.replace(/\D/g, ''); 
 
-  // 1. Number se +, spaces, aur dashes hatane ke liye (Very Important)
-  const cleanNumber = project.whatsapp_number.replace(/\D/g, ''); 
+  // 2. Agar number 10 digits ka hai, toh aage 91 lagao (India Code)
+  if (cleanNumber.length === 10) {
+    cleanNumber = `91${cleanNumber}`;
+  }
 
   const projectUrl = window.location.href;
   const message = `Hello, I'm interested in this project:\n\n*Project Name:* ${project.title}\n*Location:* ${project.design_loc}\n*Link:* ${projectUrl}\n\nI want to discuss more about this design.`;
   
   const encodedMessage = encodeURIComponent(message);
 
-  // 2. Ab 'cleanNumber' ka use karein
+  // 3. Ab final cleanNumber use hoga
   window.open(`https://wa.me/${cleanNumber}?text=${encodedMessage}`, '_blank');
 };
 

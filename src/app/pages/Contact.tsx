@@ -15,17 +15,21 @@ export const Contact = () => {
   const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14638.16480540445!2d75.05389695028442!3d23.923610486874413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396125ac027f7147%3A0x60b7bc54d0dff0f0!2sDaloda%2C%20Madhya%20Pradesh%20458667!5e0!3m2!1sen!2sin!4v1709123456789!5m2!1sen!2sin";
 
   const handleWhatsAppClick = () => {
-    // 1. Country code (91) ke saath clean number banayein
-    const cleanNumber = adminPhone.replace(/\D/g, '');
-    const finalNumber = cleanNumber.startsWith('91') ? cleanNumber : `91${cleanNumber}`;
+  // 1. Pehle saare faltu symbols hatao
+  let cleanNumber = adminPhone.replace(/\D/g, ''); 
 
-    // 2. Message ko sahi se encode karein taaki spaces break na ho
-    const message = `Hello! My name is ${formData.name}.\nEmail: ${formData.email}\nMessage: ${formData.message}`;
-    const encodedText = encodeURIComponent(message);
+  // 2. Agar number 10 digits ka hai (jaise 9109231207), toh aage 91 lagao
+  // 3. Agar user ne galti se adhura number dala hai, toh use sahi format mein laao
+  if (cleanNumber.length === 10) {
+    cleanNumber = `91${cleanNumber}`;
+  }
 
-    // 3. Final URL kholiye
-    window.open(`https://wa.me/${finalNumber}?text=${encodedText}`, '_blank');
-  };
+  // Final check: Agar abhi bhi length 12 se kam hai, toh matlab number galat typed hai
+  console.log("Final WhatsApp Number:", cleanNumber); // Ye terminal/inspect mein dikhega
+
+  const message = encodeURIComponent(`Hello, I'm interested in your services!`);
+  window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank');
+};
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-6 py-20">

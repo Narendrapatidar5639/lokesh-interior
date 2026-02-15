@@ -18,7 +18,7 @@ const Projects: React.FC = () => {
     const fetchProjects = async () => {
       try {
         // Django API URL
-        const response = await axios.get<Project[]>('http://127.0.0.1:8000/api/projects/');
+        const response = await axios.get<Project[]>('https://lucky-interior.onrender.com/api/projects/');
         setProjects(response.data);
       } catch (error) {
         console.error("API Error:", error);

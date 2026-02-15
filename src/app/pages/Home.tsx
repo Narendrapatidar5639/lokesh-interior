@@ -39,7 +39,7 @@ export const Home = () => {
   const [featuredProjects, setFeaturedProjects] = useState<any[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
-  const API_BASE = "http://127.0.0.1:8000/api";
+  const API_BASE = "https://lucky-interior.onrender.com/api";
 
   const isUserLoggedIn = !!localStorage.getItem("username");
   const baseClients = 2153;

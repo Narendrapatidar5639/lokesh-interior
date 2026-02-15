@@ -17,7 +17,7 @@ const Signup = () => {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/register/", {
+      const response = await axios.post("https://lucky-interior.onrender.com/api/register/", {
         username: username,
         email: email,      // Backend ko email bhej rahe hain
         password: password,
@@ -45,7 +45,7 @@ const Signup = () => {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      const response = await fetch("http://127.0.0.1:8000/api/register/", {
+      const response = await fetch("https://lucky-interior.onrender.com/api/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

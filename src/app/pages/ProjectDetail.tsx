@@ -16,7 +16,7 @@ export const ProjectDetail = () => {
   const [feedback, setFeedback] = useState('');
   const [feedbackList, setFeedbackList] = useState<any[]>([]);
 
-  const API_BASE = "http://127.0.0.1:8000";
+  const API_BASE = "https://lucky-interior.onrender.com";
 
   useEffect(() => {
     if (!id) return;

@@ -14,7 +14,7 @@ export default function Login() {
   const login = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/login/", {
+      const res = await fetch("https://lucky-interior.onrender.com/api/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -49,7 +49,7 @@ if (res.ok) {
       const userEmail = result.user.email;
 
       // 2. Backend ko email bhej kar check karna
-      const res = await fetch("http://127.0.0.1:8000/api/google-check/", {
+      const res = await fetch("https://lucky-interior.onrender.com/api/google-check/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: userEmail }),

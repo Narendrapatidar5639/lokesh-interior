@@ -11,7 +11,7 @@ import { Contact } from "./pages/Contact";
 import { Services } from "./pages/service";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { Admin } from "./pages/admin";
+import { Admin } from "./pages/Admin";
 import ForgotPassword from "./pages/ForgetPassword";
 import RoleSelection from "./pages/RoleSelection";
 
